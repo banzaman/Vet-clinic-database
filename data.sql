@@ -1,9 +1,3 @@
-/* Populate database with sample data. */
-
-INSERT INTO animals (name) VALUES ('Luna');
-INSERT INTO animals (name) VALUES ('Daisy');
-INSERT INTO animals (name) VALUES ('Charlie');
-
 postgres=# INSERT INTO animals VALUES( 1, 'Agumon', '2020-2-3', 0, TRUE, 10.23);
 INSERT 0 1
 postgres=# INSERT INTO animals VALUES( 2, 'Gabumon', '2018-11-15', 2, TRUE, 8);

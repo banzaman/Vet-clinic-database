@@ -11,7 +11,8 @@ SELECT * from animals WHERE name = 'Luna';
  SELECT name FROM animals WHERE NOT name = 'Gabumon';
  SELECT name FROM animals WHERE weight_kg <= 17.3 AND weight_kg >= 10.4;
 
---TRANSCATIONS
+-- Transactions
+
 -- First
 BEGIN TRANSACTION;
 UPDATE animals SET species = 'unspecified';
@@ -44,7 +45,6 @@ COMMIT;
 SELECT * from animals;
 
 
---queries
 SELECT COUNT(*) from animals;
 
 SELECT COUNT(*) from animals WHERE escape_attempts = 0;
@@ -58,3 +58,45 @@ SELECT species, MIN(weight_kg), MAX(weight_kg) from animals GROUP BY species;
 SELECT species, AVG(escape_attempts) from animals
 WHERE date_of_birth BETWEEN '1990/01/01' AND '2000/12/31'
 GROUP BY species;
+
+-- Questions
+
+-- First
+SELECT animals.name FROM animals
+JOIN owners ON animals.owner_id = owners.id
+WHERE owners.full_name = 'Melody Pond';
+
+-- Second
+SELECT animals.name, species.name as Type FROM animals
+JOIN species ON animals.species_id = species.id
+WHERE species.name = 'Pokemon';
+
+-- Third
+SELECT animals.name, owners.full_name FROM animals
+RIGHT JOIN owners ON animals.owner_id = owners.id;
+
+-- Fourth
+SELECT COUNT(*), species.name FROM animals
+JOIN species ON animals.species_id = species.id
+GROUP BY species.name;
+
+-- Five
+SELECT a.name animal_name, s.name type, o.full_name as owner
+FROM animals a
+JOIN owners o ON a.owner_id = o.id
+JOIN species s ON a.species_id = s.id
+WHERE o.full_name = 'Jennifer Orwell'
+AND s.name LIKE 'Digimon';
+
+-- Six
+SELECT a.name animal_name, a.escape_attempts, o.full_name as owner
+FROM animals a
+JOIN owners o ON a.owner_id = o.id
+WHERE o.full_name = 'Dean Winchester'
+AND a.escape_attempts = 0;
+
+-- Seven
+SELECT COUNT(*) as Number_of_animals, o.full_name as owner
+FROM animals a
+JOIN owners o ON a.owner_id = o.id
+GROUP BY o.full_name;
