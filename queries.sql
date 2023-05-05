@@ -42,3 +42,19 @@ ROLLBACK TO SAVEPOINT animals_after_22;
 UPDATE animals SET weight_kg = (weight_kg * -1) WHERE weight_kg < 0;
 COMMIT;
 SELECT * from animals;
+
+
+--queries
+SELECT COUNT(*) from animals;
+
+SELECT COUNT(*) from animals WHERE escape_attempts = 0;
+
+SELECT AVG(weight_kg) from animals;
+
+SELECT neutered, AVG(escape_attempts) from animals GROUP BY neutered;
+
+SELECT species, MIN(weight_kg), MAX(weight_kg) from animals GROUP BY species;
+
+SELECT species, AVG(escape_attempts) from animals
+WHERE date_of_birth BETWEEN '1990/01/01' AND '2000/12/31'
+GROUP BY species;
