@@ -79,6 +79,7 @@ This repository includes files with plain SQL that can be used to recreate a dat
 👤 **Mark Rubanza**
 
 - GitHub: [@banzaman](https://github.com/banzaman/)
+- LinkedIn: [Mark Rubanza Anderson](https://www.linkedin.com/in/mark-rubanza-anderson/)
 
 <p align="right"><a href="#readme-top">Back to top</a></p>
 
