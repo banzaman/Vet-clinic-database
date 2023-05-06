@@ -72,6 +72,20 @@ This repository includes files with plain SQL that can be used to recreate a dat
 - Use [data.sql](./data.sql) to populate tables with sample data.
 - Check [queries.sql](./queries.sql) for examples of queries that can be run on a newly created database. **Important note: this file might include queries that make changes in the database (e.g., remove records). Use them responsibly!**
 
+To get a local copy up and running, follow these steps:
+
+### Prerequisites
+
+In order to run this project you need to have VS CODE  or any EDITOR installed in your environment.
+
+### Setup
+
+Clone this repository to your desired folder:
+
+```sh
+  cd my-folder
+  git clone https://github.com/banzaman/Vet-clinic-database.git
+```
 <!-- AUTHORS -->
 
 ## 👥 Authors <a name="authors"></a>
