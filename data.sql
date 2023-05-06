@@ -1,9 +1,3 @@
-/* Populate database with sample data. */
-
-INSERT INTO animals (name) VALUES ('Luna');
-INSERT INTO animals (name) VALUES ('Daisy');
-INSERT INTO animals (name) VALUES ('Charlie');
-
 postgres=# INSERT INTO animals VALUES( 1, 'Agumon', '2020-2-3', 0, TRUE, 10.23);
 INSERT 0 1
 postgres=# INSERT INTO animals VALUES( 2, 'Gabumon', '2018-11-15', 2, TRUE, 8);
@@ -30,3 +24,24 @@ INSERT 0 1
 postgres=# INSERT INTO animals VALUES( 11, 'Ditto', '2022-5-14', 4, TRUE,   22);
 INSERT 0 1
 postgres=# SELECT * FROM animals;
+
+INSERT INTO public.owners(full_name, age)
+VALUES
+('Sam Smith', 34),
+('Jennifer Orwell', 19),
+('Bob', 45),
+('Melody Pond', 77),
+('Dean Winchester', 14),
+('Jodie Whittaker', 38);
+
+INSERT INTO public.species(name)
+VALUES
+('Pokemon'),
+('Digimon');
+
+UPDATE animals SET species_id = (SELECT id from species WHERE name = 'Pokemon') WHERE species_id IS NULL;
+UPDATE animals SET owner_id = (SELECT id from owners WHERE full_name = 'Sam Smith') WHERE name = 'Agumon';
+UPDATE animals SET owner_id = (SELECT id from owners WHERE full_name = 'Jennifer Orwell') WHERE name = 'Gabumon' OR name = 'Pikachu';
+UPDATE animals SET owner_id = (SELECT id from owners WHERE full_name = 'Bob') WHERE name = 'Devimon' OR name = 'Plantmon';
+UPDATE animals SET owner_id = (SELECT id from owners WHERE full_name = 'Melody Pond') WHERE name = 'Charmander' OR name = 'Squirtle' OR name = 'Blossom';
+UPDATE animals SET owner_id = (SELECT id from owners WHERE full_name = 'Dean Winchester') WHERE name = 'Angemon' OR name = 'Boarmon';
